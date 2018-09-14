@@ -1,0 +1,50 @@
+---
+title: "Milestone Report - Exploratory Analysis"
+author: "Taiguara Melo Tupinambás"
+date: "14 de setembro de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This aim of this report is to perform an exploratory analysis of the english language corpora from the Data Science Specialization Capstone Project, from Coursera.
+
+We begin by.......
+
+
+## 1. Data Loading and Processing
+
+```{r data}
+setwd("./final/en_US")
+
+enBlog <- readLines("en_US.blogs.txt", skipNul = TRUE, encoding= "UTF-8")
+enNews <- readLines("en_US.news.txt", skipNul = TRUE, encoding= "UTF-8")
+enTwitter <- readLines("en_US.twitter.txt", skipNul = TRUE, encoding= "UTF-8")
+
+``` 
+
+To get a glimpse of the data, their summaries are displayed:
+
+``` {r sum}
+summary(enBlog)
+summary(enNews)
+summary(enTwitter)
+```
+
+Since the corpora is too big, the database is sampled down to 5000 lines.
+
+``` {r samp}
+set.seed(13)
+sampleSize <- 5000
+
+enBlogS <- enBlog[sample(1:length(enBlog),sampleSize)]
+enNewsS <- enNews[sample(1:length(enNews),sampleSize)]
+enTwitterS <- enTwitter[sample(1:length(enTwitter),sampleSize)]
+
+```
+
+## 2. Plots
